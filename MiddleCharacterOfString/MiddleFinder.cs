@@ -9,26 +9,30 @@ namespace MiddleCharacterOfString
             {
                 return "empty string";
             }
-            if (IsLengthOne(userString))
+
+            if (IsOne(userString.Length))
             {
                 return userString;
             }
 
             var middleOfWord = (userString.Length - 1) / 2;
 
-            if (IsEven(userString))
+            if (IsEven(userString.Length))
             {
                 return userString.Substring(middleOfWord, 2);
             }
-               return userString.Substring(middleOfWord, 1);
+
+            return userString.Substring(middleOfWord, 1);
         }
-        private bool IsLengthOne (string userString)
+
+        private bool IsOne (int length)
         {
-            return userString.Length == 1;
+            return length == 1;
         }
-        private bool IsEven(string userString)
+
+        private bool IsEven(int length)
         {
-            return userString.Length % 2 == 0;
+            return length % 2 == 0;
         }
     }
 }
