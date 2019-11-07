@@ -1,29 +1,34 @@
-﻿using System;
-
+﻿
 namespace MiddleCharacterOfString
 {
     class MiddleFinder
     {
         public string FindMiddle(string userString)
-        {
-            string middleString = "";
+        {            
             if (string.IsNullOrEmpty(userString))
             {
-                middleString = "empty string";
+                return "empty string";
             }
-            else if (userString.Length < 2)
+            if (IsLengthOne(userString))
             {
-                middleString = userString.Substring((userString.Length - 1) / 2, Math.Min(userString.Length,2));
+                return userString;
             }
-            else if(userString.Length %2 == 0)
+
+            var middleOfWord = (userString.Length - 1) / 2;
+
+            if (IsEven(userString))
             {
-                middleString = userString.Substring((userString.Length - 1) / 2, 2);
+                return userString.Substring(middleOfWord, 2);
             }
-            else if (userString.Length % 2 != 0)
-            {
-                middleString = userString.Substring((userString.Length - 1) / 2, 1);
-            }
-            return middleString;
+               return userString.Substring(middleOfWord, 1);
+        }
+        private bool IsLengthOne (string userString)
+        {
+            return userString.Length == 1;
+        }
+        private bool IsEven(string userString)
+        {
+            return userString.Length % 2 == 0;
         }
     }
 }
